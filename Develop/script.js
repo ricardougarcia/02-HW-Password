@@ -39,16 +39,6 @@ function generatePassword() {
     var numbers = "0123456789";
     var symbols = "!@#$%^&*_-+=";
 
-    // This is my candidate pool of selected characters
-    // var candidatePool = alphaLower + alphaUpper + numbers + symbols;
-    // console.log(candidatePool);
-
-    // This is my function for looping selected characters
-    // var passwordCandidate = "";
-    // for(int i = 0; i < passwordLength; i++) {
-    //   //var randChar = // get your randomly access character from the candidate pool
-    //   passwordCandidate = passwordCandidate + randChar;
-
     var randomAlphaLower = "";
     console.log(randomAlphaLower);
     // This is my loop equivalent to the selected password length
@@ -64,11 +54,30 @@ function generatePassword() {
   } else {
     console.log("False ❌ False ❌");
     alert("Please select a number between 8 - 128");
+
+    /////// notes at night: I now want the forloop to pull from a pool of user selected characters.
+
+    ///// if user uppercase true then add var string to pool
+
+    ///// if user lowercase true then add var string to pool
+
+    ///// if user characters true then add var string to pool
+
+    ////// True character pool
+
+    ////// I have to create a
+
+    // This is my candidate pool of selected characters
+    // var candidatePool = alphaLower + alphaUpper + numbers + symbols;
+    // console.log(candidatePool);
+
+    // This is my function for looping selected characters
+    // var passwordCandidate = "";
+    // for(int i = 0; i < passwordLength; i++) {
+    //   //var randChar = // get your randomly access character from the candidate pool
+    //   passwordCandidate = passwordCandidate + randChar;
   }
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-// for (var i=0; i < 26; i++) { console.log ("blah blah" + i + ".")}
-//                   i < zooanimals.length
