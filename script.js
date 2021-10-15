@@ -22,18 +22,16 @@ function generatePassword() {
   var minpasswordLength = passwordLength > 7;
   var maxpasswordLength = passwordLength < 128;
   if (minpasswordLength && maxpasswordLength) {
-    console.log(passwordLength);
-
     // User selects uppercase - boolean
     var uppercase = confirm("Do you want uppercase characters?");
-    // console.log(uppercase);
+    // User selects lowercase - boolean
     var lowercase = confirm("Do you want lowercase letters?");
     // User selects numbers- boolean
     var numbers = confirm("Do you want numbers?");
     // User selects characters- boolean
     var userChoseSpecial = confirm("Do you want special characters?");
 
-    // This is my array of password characters.
+    // This is my string of password characters.
     var alphaLower = "abcdefghijklmnopqrstuvwxyz";
     var alphaUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var numbers = "0123456789";
@@ -58,32 +56,17 @@ function generatePassword() {
       selectedCharactersPool = selectedCharactersPool + numbers;
     }
     var generatedPasscode = "";
-    console.log(selectedCharactersPool);
     // This is my loop equivalent to the selected password length
     for (var i = 0; i < passwordLength; i++) {
       var randomSelectedCharacter =
         selectedCharactersPool[
           Math.floor(Math.random() * selectedCharactersPool.length)
         ];
-      console.log(generatedPasscode);
       generatedPasscode = generatedPasscode + randomSelectedCharacter;
-      console.log(generatedPasscode);
     }
-    console.log("result: " + generatedPasscode);
     return generatedPasscode;
   } else {
-    console.log("False ❌ False ❌");
     alert("Please select a number between 8 - 128");
-
-    // This is my candidate pool of selected characters
-    // var candidatePool = alphaLower + alphaUpper + numbers + symbols;
-    // console.log(candidatePool);
-
-    // This is my function for looping selected characters
-    // var passwordCandidate = "";
-    // for(int i = 0; i < passwordLength; i++) {
-    //   //var randChar = // get your randomly access character from the candidate pool
-    //   passwordCandidate = passwordCandidate + randChar;
   }
 }
 
