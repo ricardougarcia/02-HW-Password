@@ -14,15 +14,15 @@ function generatePassword() {
     "How many characters would you like (between 8-128)?",
     "8"
   );
-  //passwordlength turning string to numbers
-  var passwordlength = parseFloat(totalcharacters);
+  //passwordLength turning string to numbers
+  var passwordLength = parseFloat(totalcharacters);
 
   //validating entry is within parameters. If not then alert!
   //First line validates length with boolean
-  var minpasswordlength = passwordlength > 7;
-  var maxpasswordlength = passwordlength < 128;
-  if (minpasswordlength && maxpasswordlength) {
-    console.log(passwordlength);
+  var minpasswordLength = passwordLength > 7;
+  var maxpasswordLength = passwordLength < 128;
+  if (minpasswordLength && maxpasswordLength) {
+    console.log(passwordLength);
 
     // User selects uppercase - boolean
     var uppercase = confirm("Do you want uppercase characters?");
@@ -31,7 +31,7 @@ function generatePassword() {
     // User selects numbers- boolean
     var numbers = confirm("Do you want numbers?");
     // User selects characters- boolean
-    var special = confirm("Do you want special characters?");
+    var userChoseSpecial = confirm("Do you want special characters?");
 
     // This is my array of password characters.
     var alphaLower = "abcdefghijklmnopqrstuvwxyz";
@@ -39,33 +39,41 @@ function generatePassword() {
     var numbers = "0123456789";
     var symbols = "!@#$%^&*_-+=";
 
-    var randomAlphaLower = "";
-    console.log(randomAlphaLower);
-    // This is my loop equivalent to the selected password length
-    for (var i = 0; i < passwordlength; i++) {
-      var generatedLower =
-        alphaLower[Math.floor(Math.random() * alphaLower.length)];
-      console.log(randomAlphaLower);
-      randomAlphaLower = randomAlphaLower + generatedLower;
-      console.log(randomAlphaLower);
+    /////// notes at night: I now want the forloop to pull from a pool of user selected characters.
+    var selectedCharactersPool = "";
+    ///// if user special true then add var string to pool
+    if (userChoseSpecial) {
+      selectedCharactersPool = selectedCharactersPool + symbols;
     }
-    console.log("result: " + randomAlphaLower);
-    return randomAlphaLower;
+    ///// if user uppercase true then add var string to pool
+    if (uppercase) {
+      selectedCharactersPool = selectedCharactersPool + alphaUpper;
+    }
+    ///// if user lowercase true then add var string to pool
+    if (lowercase) {
+      selectedCharactersPool = selectedCharactersPool + alphaLower;
+    }
+
+    if (numbers) {
+      selectedCharactersPool = selectedCharactersPool + numbers;
+    }
+    var generatedPasscode = "";
+    console.log(selectedCharactersPool);
+    // This is my loop equivalent to the selected password length
+    for (var i = 0; i < passwordLength; i++) {
+      var randomSelectedCharacter =
+        selectedCharactersPool[
+          Math.floor(Math.random() * selectedCharactersPool.length)
+        ];
+      console.log(generatedPasscode);
+      generatedPasscode = generatedPasscode + randomSelectedCharacter;
+      console.log(generatedPasscode);
+    }
+    console.log("result: " + generatedPasscode);
+    return generatedPasscode;
   } else {
     console.log("False ❌ False ❌");
     alert("Please select a number between 8 - 128");
-
-    /////// notes at night: I now want the forloop to pull from a pool of user selected characters.
-
-    ///// if user uppercase true then add var string to pool
-
-    ///// if user lowercase true then add var string to pool
-
-    ///// if user characters true then add var string to pool
-
-    ////// True character pool
-
-    ////// I have to create a
 
     // This is my candidate pool of selected characters
     // var candidatePool = alphaLower + alphaUpper + numbers + symbols;
